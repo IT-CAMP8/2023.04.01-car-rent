@@ -5,7 +5,7 @@ import pl.camp.it.car.rent.model.Car;
 public class CarRepository {
     private Car[] cars = new Car[5];
 
-    CarRepository() {
+    public CarRepository() {
         this.cars[0] = new Car("BMW", "3", 2015,
                 300.0, "KR11");
         this.cars[1] = new Car("Audi", "A5", 2016,
@@ -18,13 +18,24 @@ public class CarRepository {
                 200.0, "KR55");
     }
 
-    public void rentCar(String plate) {
+    public boolean rentCar(String plate) {
         for(Car car : this.cars) {
             if(!car.isRent() && car.getPlate().equals(plate)) {
                 car.setRent(true);
-                return;
+                return true;
             }
         }
+        return false;
+    }
+
+    public boolean returnCar(String plate) {
+        for(Car car : this.cars) {
+            if(car.isRent() && car.getPlate().equals(plate)) {
+                car.setRent(false);
+                return true;
+            }
+        }
+        return false;
     }
 
     public Car[] getCars() {
