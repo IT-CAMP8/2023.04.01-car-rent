@@ -2,35 +2,28 @@ package pl.camp.it.car.rent.core;
 
 import pl.camp.it.car.rent.db.BusRepository;
 import pl.camp.it.car.rent.db.CarRepository;
+import pl.camp.it.car.rent.db.VehicleRepository;
 import pl.camp.it.car.rent.gui.GUI;
 
 public class Core {
-    CarRepository baza = new CarRepository();
-    BusRepository busesDB = new BusRepository();
+    //CarRepository baza = new CarRepository();
+    //BusRepository busesDB = new BusRepository();
+    VehicleRepository database = new VehicleRepository();
     GUI gui = new GUI();
     public void start() {
         boolean run = true;
         do {
-            String plate;
-            boolean carSuccess, busSuccess;
             switch(gui.showMenu()) {
                 case "1":
-                    gui.listCars(baza.getCars());
-                    gui.listBuses(busesDB.getBuses());
+                    //gui.listCars(baza.getCars());
+                    //gui.listBuses(busesDB.getBuses());
+                    gui.listVehicles(database.getVehicles());
                     break;
                 case "2":
-                    plate = gui.readPlate();
-                    carSuccess = baza.rentCar(plate);
-                    busSuccess = busesDB.rentBus(plate);
-                    gui.showRentReturnResult(
-                            carSuccess || busSuccess);
+                    gui.showRentReturnResult(database.rentVehicle(gui.readPlate()));
                     break;
                 case "3":
-                    plate = gui.readPlate();
-                    carSuccess = baza.returnCar(plate);
-                    busSuccess = busesDB.returnBus(plate);
-                    gui.showRentReturnResult(
-                            carSuccess || busSuccess);
+                    gui.showRentReturnResult(database.returnVehicle(gui.readPlate()));
                     break;
                 case "4":
                     run = false;

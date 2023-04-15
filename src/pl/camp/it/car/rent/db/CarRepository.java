@@ -2,6 +2,7 @@ package pl.camp.it.car.rent.db;
 
 import pl.camp.it.car.rent.model.Car;
 
+//DO KOSZA
 public class CarRepository {
     private Car[] cars = new Car[5];
 

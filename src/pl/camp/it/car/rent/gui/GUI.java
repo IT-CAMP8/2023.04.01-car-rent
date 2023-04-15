@@ -2,6 +2,7 @@ package pl.camp.it.car.rent.gui;
 
 import pl.camp.it.car.rent.model.Bus;
 import pl.camp.it.car.rent.model.Car;
+import pl.camp.it.car.rent.model.Vehicle;
 
 import java.util.Scanner;
 
@@ -20,14 +21,14 @@ public class GUI {
         return scanner.nextLine();
     }
 
-    public void listCars(Car[] cars) {
+    /*public void listCars(Car[] cars) {
         for(Car car : cars) {
             if(!car.isRent()) {
-                /*System.out.println(car.getBrand() + " " +
+                *//*System.out.println(car.getBrand() + " " +
                         car.getModel() + " " +
                         car.getPrice() + " " +
                         car.getYear() + " " +
-                        car.getPlate());*/
+                        car.getPlate());*//*
                 System.out.println(new StringBuilder()
                         .append(car.getBrand())
                         .append(" ")
@@ -41,9 +42,9 @@ public class GUI {
                         .toString());
             }
         }
-    }
+    }*/
 
-    public void listBuses(Bus[] buses) {
+    /*public void listBuses(Bus[] buses) {
         for(Bus bus : buses) {
             if(!bus.isRent()) {
                 System.out.println(new StringBuilder()
@@ -62,6 +63,12 @@ public class GUI {
                         .append(bus.isTicketMachine())
                         .toString());
             }
+        }
+    }*/
+
+    public void listVehicles(Vehicle[] vehicles) {
+        for(Vehicle vehicle : vehicles) {
+            System.out.println(vehicle);
         }
     }
 
