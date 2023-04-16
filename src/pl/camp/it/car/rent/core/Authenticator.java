@@ -6,19 +6,18 @@ import pl.camp.it.car.rent.gui.GUI;
 import pl.camp.it.car.rent.model.User;
 
 public class Authenticator {
-    GUI gui = new GUI();
-    UserRepository usersDatabase = new UserRepository();
+    private static final UserRepository usersDatabase = new UserRepository();
 
-    private String seed = "Ba7gPOCX3l4Kjd6PlgbT8^%XZGRia8LI";
+    private static final String seed = "Ba7gPOCX3l4Kjd6PlgbT8^%XZGRia8LI";
 
-    public boolean authenticate() {
+    public static boolean authenticate() {
         int counter = 0;
         while (counter < 3) {
-            User userFromGui = gui.readLoginAndPassword();
+            User userFromGui = GUI.readLoginAndPassword();
             User userFromDb = usersDatabase.findUserByLogin(userFromGui.getLogin());
             if(userFromDb != null &&
                     userFromDb.getPassword().equals(
-                            DigestUtils.md5Hex(userFromGui.getPassword()+this.seed))) {
+                            DigestUtils.md5Hex(userFromGui.getPassword() + seed))) {
                 return true;
             }
 

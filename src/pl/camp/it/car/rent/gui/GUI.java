@@ -8,8 +8,8 @@ import pl.camp.it.car.rent.model.Vehicle;
 import java.util.Scanner;
 
 public class GUI {
-    Scanner scanner = new Scanner(System.in);
-    public String showMenu() {
+    private static Scanner scanner = new Scanner(System.in);
+    public static String showMenu() {
         System.out.println("1. List cars");
         System.out.println("2. Rent car");
         System.out.println("3. Return car");
@@ -18,18 +18,18 @@ public class GUI {
         return scanner.nextLine();
     }
 
-    public void listVehicles(Vehicle[] vehicles) {
+    public static void listVehicles(Vehicle[] vehicles) {
         for(Vehicle vehicle : vehicles) {
             System.out.println(vehicle);
         }
     }
 
-    public String readPlate() {
+    public static String readPlate() {
         System.out.println("Plate:");
         return scanner.nextLine();
     }
 
-    public void showRentReturnResult(boolean result) {
+    public static void showRentReturnResult(boolean result) {
         if(result) {
             System.out.println("Success !!");
         } else {
@@ -37,7 +37,7 @@ public class GUI {
         }
     }
 
-    public User readLoginAndPassword() {
+    public static User readLoginAndPassword() {
         System.out.println("Login:");
         String login = scanner.nextLine();
         System.out.println("Password:");

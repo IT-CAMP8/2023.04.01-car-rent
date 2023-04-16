@@ -3,7 +3,7 @@ package pl.camp.it.car.rent.db;
 import pl.camp.it.car.rent.model.User;
 
 public class UserRepository {
-    private User[] users = new User[2];
+    private final User[] users = new User[2];
 
     public UserRepository() {
         this.users[0] = new User("admin", "54e3353920c4496ca0cdd7ad5cf2b648");

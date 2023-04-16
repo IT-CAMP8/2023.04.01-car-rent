@@ -1,29 +1,25 @@
 package pl.camp.it.car.rent.core;
 
-import pl.camp.it.car.rent.db.UserRepository;
 import pl.camp.it.car.rent.db.VehicleRepository;
 import pl.camp.it.car.rent.gui.GUI;
-import pl.camp.it.car.rent.model.User;
 
 public class Core {
-    VehicleRepository database = new VehicleRepository();
-    GUI gui = new GUI();
-    Authenticator authenticator = new Authenticator();
-    public void start() {
-        if(!authenticator.authenticate()) {
+    private static final VehicleRepository database = new VehicleRepository();
+    public static void start() {
+        if(!Authenticator.authenticate()) {
             return;
         }
         mainloop:
         while(true) {
-            switch(gui.showMenu()) {
+            switch(GUI.showMenu()) {
                 case "1":
-                    gui.listVehicles(database.getVehicles());
+                    GUI.listVehicles(database.getVehicles());
                     break;
                 case "2":
-                    gui.showRentReturnResult(database.rentVehicle(gui.readPlate()));
+                    GUI.showRentReturnResult(database.rentVehicle(GUI.readPlate()));
                     break;
                 case "3":
-                    gui.showRentReturnResult(database.returnVehicle(gui.readPlate()));
+                    GUI.showRentReturnResult(database.returnVehicle(GUI.readPlate()));
                     break;
                 case "4":
                     break mainloop;
