@@ -1,22 +1,22 @@
 package pl.camp.it.car.rent.core;
 
-import pl.camp.it.car.rent.db.BusRepository;
-import pl.camp.it.car.rent.db.CarRepository;
+import pl.camp.it.car.rent.db.UserRepository;
 import pl.camp.it.car.rent.db.VehicleRepository;
 import pl.camp.it.car.rent.gui.GUI;
+import pl.camp.it.car.rent.model.User;
 
 public class Core {
-    //CarRepository baza = new CarRepository();
-    //BusRepository busesDB = new BusRepository();
     VehicleRepository database = new VehicleRepository();
     GUI gui = new GUI();
+    Authenticator authenticator = new Authenticator();
     public void start() {
-        boolean run = true;
-        do {
+        if(!authenticator.authenticate()) {
+            return;
+        }
+        mainloop:
+        while(true) {
             switch(gui.showMenu()) {
                 case "1":
-                    //gui.listCars(baza.getCars());
-                    //gui.listBuses(busesDB.getBuses());
                     gui.listVehicles(database.getVehicles());
                     break;
                 case "2":
@@ -26,12 +26,11 @@ public class Core {
                     gui.showRentReturnResult(database.returnVehicle(gui.readPlate()));
                     break;
                 case "4":
-                    run = false;
-                    break;
+                    break mainloop;
                 default:
                     System.out.println("Wrong choose !!");
                     break;
             }
-        } while (run);
+        }
     }
 }

@@ -2,16 +2,13 @@ package pl.camp.it.car.rent.gui;
 
 import pl.camp.it.car.rent.model.Bus;
 import pl.camp.it.car.rent.model.Car;
+import pl.camp.it.car.rent.model.User;
 import pl.camp.it.car.rent.model.Vehicle;
 
 import java.util.Scanner;
 
 public class GUI {
     Scanner scanner = new Scanner(System.in);
-
-    /*GUI() {
-        this.scanner = new Scanner(System.in);
-    }*/
     public String showMenu() {
         System.out.println("1. List cars");
         System.out.println("2. Rent car");
@@ -20,51 +17,6 @@ public class GUI {
 
         return scanner.nextLine();
     }
-
-    /*public void listCars(Car[] cars) {
-        for(Car car : cars) {
-            if(!car.isRent()) {
-                *//*System.out.println(car.getBrand() + " " +
-                        car.getModel() + " " +
-                        car.getPrice() + " " +
-                        car.getYear() + " " +
-                        car.getPlate());*//*
-                System.out.println(new StringBuilder()
-                        .append(car.getBrand())
-                        .append(" ")
-                        .append(car.getModel())
-                        .append(" ")
-                        .append(car.getPrice())
-                        .append(" ")
-                        .append(car.getYear())
-                        .append(" ")
-                        .append(car.getPlate())
-                        .toString());
-            }
-        }
-    }*/
-
-    /*public void listBuses(Bus[] buses) {
-        for(Bus bus : buses) {
-            if(!bus.isRent()) {
-                System.out.println(new StringBuilder()
-                        .append(bus.getBrand())
-                        .append(" ")
-                        .append(bus.getModel())
-                        .append(" ")
-                        .append(bus.getPrice())
-                        .append(" ")
-                        .append(bus.getYear())
-                        .append(" ")
-                        .append(bus.getPlate())
-                        .append(" ")
-                        .append(bus.getSeats())
-                        .append(" ")
-                        .append(bus.isTicketMachine())
-                        .toString());
-            }
-        }
-    }*/
 
     public void listVehicles(Vehicle[] vehicles) {
         for(Vehicle vehicle : vehicles) {
@@ -83,5 +35,12 @@ public class GUI {
         } else {
             System.out.println("Error !!");
         }
+    }
+
+    public User readLoginAndPassword() {
+        System.out.println("Login:");
+        String login = scanner.nextLine();
+        System.out.println("Password:");
+        return new User(login, scanner.nextLine());
     }
 }

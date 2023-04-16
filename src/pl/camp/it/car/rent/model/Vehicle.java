@@ -66,4 +66,21 @@ public class Vehicle {
     public void setRent(boolean rent) {
         this.rent = rent;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append(this.brand)
+                .append(" ")
+                .append(this.model)
+                .append(" ")
+                .append(this.year)
+                .append(" Cena: ")
+                .append(this.price)
+                .append(" Rejestracja: ")
+                .append(this.plate)
+                .append(" ")
+                .append(this.rent ? "Niedostepny" : "Dostepny")
+                .toString();
+    }
 }
