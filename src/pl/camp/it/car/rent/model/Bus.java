@@ -10,6 +10,12 @@ public class Bus extends Vehicle {
         this.ticketMachine = ticketMachine;
     }
 
+    public Bus(String[] vars) {
+        super(vars);
+        this.seats = Integer.parseInt(vars[6]);
+        this.ticketMachine = Boolean.parseBoolean(vars[7]);
+    }
+
     public Bus() {
     }
 
@@ -37,6 +43,17 @@ public class Bus extends Vehicle {
                 .append(this.seats)
                 .append(" Biletomat: ")
                 .append(this.ticketMachine ? "Tak" : "Nie")
+                .toString();
+    }
+
+    @Override
+    public String toCSV() {
+        //return super.toCSV() + ";" + this.seats + ";" + this.ticketMachine;
+        return new StringBuilder(super.toCSV())
+                .append(";")
+                .append(this.seats)
+                .append(";")
+                .append(this.ticketMachine)
                 .toString();
     }
 }

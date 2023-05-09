@@ -7,6 +7,10 @@ public class Car extends Vehicle {
         super(brand, model, year, price, plate);
     }
 
+    public Car(String[] vars) {
+        super(vars);
+    }
+
     public Car() {
     }
 }

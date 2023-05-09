@@ -1,15 +1,23 @@
 package pl.camp.it.car.rent.gui;
 
+import pl.camp.it.car.rent.db.VehicleRepository;
 import pl.camp.it.car.rent.model.Bus;
 import pl.camp.it.car.rent.model.Car;
 import pl.camp.it.car.rent.model.User;
 import pl.camp.it.car.rent.model.Vehicle;
 
+import java.util.Collection;
 import java.util.Scanner;
 
 public class GUI {
-    private static Scanner scanner = new Scanner(System.in);
-    public static String showMenu() {
+
+    private static final GUI instance = new GUI();
+
+    private GUI() {
+
+    }
+    private Scanner scanner = new Scanner(System.in);
+    public String showMenu() {
         System.out.println("1. List cars");
         System.out.println("2. Rent car");
         System.out.println("3. Return car");
@@ -18,18 +26,18 @@ public class GUI {
         return scanner.nextLine();
     }
 
-    public static void listVehicles(Vehicle[] vehicles) {
-        for(Vehicle vehicle : vehicles) {
+    public void listVehicles() {
+        for(Vehicle vehicle : VehicleRepository.getInstance().getVehicles()) {
             System.out.println(vehicle);
         }
     }
 
-    public static String readPlate() {
+    public String readPlate() {
         System.out.println("Plate:");
         return scanner.nextLine();
     }
 
-    public static void showRentReturnResult(boolean result) {
+    public void showRentReturnResult(boolean result) {
         if(result) {
             System.out.println("Success !!");
         } else {
@@ -37,10 +45,14 @@ public class GUI {
         }
     }
 
-    public static User readLoginAndPassword() {
+    public User readLoginAndPassword() {
         System.out.println("Login:");
         String login = scanner.nextLine();
         System.out.println("Password:");
         return new User(login, scanner.nextLine());
+    }
+
+    public static GUI getInstance() {
+        return instance;
     }
 }

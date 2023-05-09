@@ -1,6 +1,6 @@
 package pl.camp.it.car.rent.model;
 
-public class Vehicle {
+public class Vehicle implements Writable {
     private String brand;
     private String model;
     private int year;
@@ -14,6 +14,12 @@ public class Vehicle {
         this.year = year;
         this.price = price;
         this.plate = plate;
+    }
+
+    public Vehicle(String[] vars) {
+        this(vars[0], vars[1], Integer.parseInt(vars[2]),
+                Double.parseDouble(vars[3]), vars[4]);
+        this.rent = Boolean.parseBoolean(vars[5]);
     }
 
     public Vehicle() {
@@ -81,6 +87,24 @@ public class Vehicle {
                 .append(this.plate)
                 .append(" ")
                 .append(this.rent ? "Niedostepny" : "Dostepny")
+                .toString();
+    }
+
+    @Override
+    public String toCSV() {
+        return new StringBuilder().append(getClass().getSimpleName())
+                .append(";")
+                .append(this.brand)
+                .append(";")
+                .append(this.model)
+                .append(";")
+                .append(this.year)
+                .append(";")
+                .append(this.price)
+                .append(";")
+                .append(this.plate)
+                .append(";")
+                .append(this.rent)
                 .toString();
     }
 }

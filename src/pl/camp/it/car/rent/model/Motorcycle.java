@@ -5,6 +5,10 @@ public class Motorcycle extends Vehicle {
         super(brand, model, year, price, plate);
     }
 
+    public Motorcycle(String[] vars) {
+        super(vars);
+    }
+
     public Motorcycle() {
     }
 }
