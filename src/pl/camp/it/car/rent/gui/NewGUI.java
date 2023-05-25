@@ -6,11 +6,10 @@ import pl.camp.it.car.rent.model.Vehicle;
 
 import java.util.Scanner;
 
-public class GUI implements IGUI {
+public class NewGUI implements IGUI {
+    private static final NewGUI instance = new NewGUI();
 
-    private static final GUI instance = new GUI();
-
-    private GUI() {
+    private NewGUI() {
 
     }
     private Scanner scanner = new Scanner(System.in);
@@ -49,7 +48,7 @@ public class GUI implements IGUI {
         return new User(login, scanner.nextLine());
     }
 
-    public static GUI getInstance() {
+    public static NewGUI getInstance() {
         return instance;
     }
 }

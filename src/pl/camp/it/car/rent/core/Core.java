@@ -3,6 +3,8 @@ package pl.camp.it.car.rent.core;
 import pl.camp.it.car.rent.db.FileLoader;
 import pl.camp.it.car.rent.db.VehicleRepository;
 import pl.camp.it.car.rent.gui.GUI;
+import pl.camp.it.car.rent.gui.IGUI;
+import pl.camp.it.car.rent.gui.NewGUI;
 
 import java.io.IOException;
 
@@ -12,7 +14,7 @@ public class Core {
     private final VehicleRepository database = VehicleRepository.getInstance();
     private final FileLoader fileLoader = FileLoader.getInstance();
     private final Authenticator authenticator = Authenticator.getInstance();
-    private final GUI gui = GUI.getInstance();
+    private final IGUI gui;
 
     private Core() {}
 
